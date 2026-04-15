@@ -1,5 +1,7 @@
 # Pumping Lemma Demonstration Tool for Regular Languages
 
+Shreyansh Jain 2024UCS1517 CSE-1 2028
+
 An interactive, web-based educational simulator designed to visualize and prove the Pumping Lemma for Regular Languages. Its primary objective is to allow users to interactively construct strings, partition them according to lemma conditions, and dynamically "pump" (duplicate or remove) a specific substring to observe whether the resulting string remains within the constraints of a target language. The tool serves as a practical medium for demonstrating how certain languages fail the Pumping Lemma, thereby disproving their regularity.
 
 
@@ -51,10 +53,4 @@ To definitively prove a language is non-regular, one partition failing is not en
 The system features an Analyze All Valid Partitions (Multi-Pump) mechanism. This computationally generates a data matrix representing every valid partition configuration for the current string and parameters.
 It systematically evaluates every configuration under the current pump count ($i$) and displays the structural outcomes side-by-side.
 If the matrix detects that every configuration breaks the language rules, the system definitively outputs a macro-conclusion that the language is completely un-pumpable and, therefore, functionally proved to be not regular.
-
-### 7. State Machine (DFA) Visualizer
-An embedded, animated SVG State Machine reflects the conceptual transition logic tied to string navigation.
-
-It consists of a start phase ($x$), a cyclical loop phase capturing the repetitive nature of $y$, and a terminal phase ($z$).
-Upon executing a pump action, the nodes and edges contextually animate (pulse and light up), reinforcing the theoretical mapping of the visual blocks to deterministic finite automaton traversal.
 
