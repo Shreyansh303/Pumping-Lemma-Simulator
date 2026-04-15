@@ -1,5 +1,5 @@
 :root {
-  --bg-color: #080a13;
+  --bg-color: #141415;
   --panel-bg: rgba(255, 255, 255, 0.04);
   --panel-border: rgba(255, 255, 255, 0.08);
   --text-primary: #f0f2f8;
@@ -62,7 +62,7 @@ h3 {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
-  background: linear-gradient(135deg, #a5edfc, #e8b2ff);
+  background: #FFFFFF;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 0.05em;
@@ -137,7 +137,7 @@ h3 {
 .header h1 {
   font-size: 2.7rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #a5edfc, #84acfc, #fbcfde);
+  background: #FFFFFF;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.5rem;
@@ -736,7 +736,7 @@ input[type="range"] {
 .hero-header h1 {
   font-size: 3.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #a5edfc, #84acfc, #e8b2ff);
+  background: #FFFFFF;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1.5rem;
