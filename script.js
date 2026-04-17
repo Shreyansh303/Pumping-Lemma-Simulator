@@ -144,7 +144,12 @@ function generateBaseString() {
     currentN = parseInt(document.getElementById('lengthSlider').value);
     document.getElementById('targetLangDisplay').textContent = 'aⁿ b³ⁿ';
     str = 'a'.repeat(currentN) + 'b'.repeat(3 * currentN);
-  } else if (currentLanguage === 'palindrome') { // Add this block
+  } else if (currentLanguage === 'palindrome') {
+    currentN = parseInt(document.getElementById('lengthSlider').value);
+    document.getElementById('targetLangDisplay').textContent = 'w = wᴿ';
+    str = 'a'.repeat(currentN) + 'b' + 'a'.repeat(currentN);
+  }
+    else if (currentLanguage === 'palindrome') { // Add this block
     currentN = parseInt(document.getElementById('lengthSlider').value);
     document.getElementById('targetLangDisplay').textContent = 'w = wᴿ';
     str = 'a'.repeat(currentN) + 'b' + 'a'.repeat(currentN);
@@ -545,44 +550,6 @@ function generateFormalProof(isValid) {
   animateDFA(pumpCount);
 }
 
-function animateDFA(pumps) {
-  document.querySelectorAll('.active-x, .active-y, .active-z').forEach(el => {
-    el.classList.remove('active-x', 'active-y', 'active-z');
-    el.style.animation = 'none';
-    void el.offsetWidth;
-    el.style.animation = null;
-  });
-
-  if (selectionStart === -1) return;
-
-  const nodeStart = document.querySelector('.node-start');
-  const nodeLoopStart = document.querySelector('.node-loop-start');
-  const nodeLoopEnd = document.querySelector('.node-loop-end');
-  const nodeEnd = document.querySelector('.node-end');
-  const edgeX = document.querySelector('.edge-x');
-  const edgeY = document.querySelector('.edge-y');
-  const edgeZ = document.querySelector('.edge-z');
-
-  if (!nodeStart) return;
-
-  nodeStart.classList.add('active-x');
-  edgeX.classList.add('active-x');
-  nodeLoopStart.classList.add('active-x');
-
-  setTimeout(() => {
-    if (pumps > 0) {
-      edgeY.classList.add('active-y');
-      nodeLoopEnd.classList.add('active-y');
-      nodeLoopEnd.style.animationIterationCount = Math.min(3, pumps);
-    }
-  }, 300);
-
-  setTimeout(() => {
-    edgeZ.classList.add('active-z');
-    nodeEnd.classList.add('active-z');
-  }, 700);
-}
-
 function checkPalindrome(str) {
   if (str.length === 0) return true; // Empty string is technically a palindrome
   const reversed = str.split('').reverse().join('');
@@ -630,6 +597,7 @@ function analyzeAllPartitions() {
       else if (lang === 'anbm') isValid = checkAnBm(pumpedStr);
       else if (lang === 'anb2n') isValid = checkAnB2n(pumpedStr);
       else if (lang === 'anb3n') isValid = checkAnB3n(pumpedStr);
+      else if (lang === 'palindrome') isValid = checkPalindrome(pumpedStr);
       else if (lang === 'customFormal') {
         const formula = document.getElementById('customFormalInput').value || 'a^n b^(2n)';
         isValid = checkCustomFormal(pumpedStr, parseFormalFormula(formula));
