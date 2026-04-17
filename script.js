@@ -144,7 +144,12 @@ function generateBaseString() {
     currentN = parseInt(document.getElementById('lengthSlider').value);
     document.getElementById('targetLangDisplay').textContent = 'aⁿ b³ⁿ';
     str = 'a'.repeat(currentN) + 'b'.repeat(3 * currentN);
-  } else if (currentLanguage === 'customFormal') {
+  } else if (currentLanguage === 'palindrome') { // Add this block
+    currentN = parseInt(document.getElementById('lengthSlider').value);
+    document.getElementById('targetLangDisplay').textContent = 'w = wᴿ';
+    str = 'a'.repeat(currentN) + 'b' + 'a'.repeat(currentN);
+  }
+    else if (currentLanguage === 'customFormal') {
     currentN = parseInt(document.getElementById('lengthSlider').value);
     const formula = document.getElementById('customFormalInput').value || 'a^n b^(2n)';
     document.getElementById('targetLangDisplay').textContent = formula;
@@ -325,7 +330,10 @@ function validateString() {
     isValid = checkAnB2n(fullStr);
   } else if (currentLanguage === 'anb3n') {
     isValid = checkAnB3n(fullStr);
-  } else if (currentLanguage === 'customFormal') {
+  } else if (currentLanguage === 'palindrome') {
+    isValid = checkPalindrome(fullStr);
+  }
+    else if (currentLanguage === 'customFormal') {
     const formula = document.getElementById('customFormalInput').value || 'a^n b^(2n)';
     const tokens = parseFormalFormula(formula);
     isValid = checkCustomFormal(fullStr, tokens);
@@ -573,6 +581,12 @@ function animateDFA(pumps) {
     edgeZ.classList.add('active-z');
     nodeEnd.classList.add('active-z');
   }, 700);
+}
+
+function checkPalindrome(str) {
+  if (str.length === 0) return true; // Empty string is technically a palindrome
+  const reversed = str.split('').reverse().join('');
+  return str === reversed;
 }
 
 function analyzeAllPartitions() {
